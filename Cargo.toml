@@ -1,0 +1,18 @@
+[package]
+name = "rustic-spotify-provider"
+version = "0.1.0"
+authors = ["Max Jöhnk <maxjoehnk@gmail.com>"]
+
+[dependencies]
+failure = "0.1"
+failure_derive = "0.1"
+rspotify = "0.2"
+serde = "1.0"
+serde_derive = "1.0"
+log = "0.4"
+
+[dependencies.rustic-core]
+git = "https://github.com/rustic-music-player/core"
+
+[patch."https://github.com/rustic-music-player/core".rustic-core]
+path = "../core"
