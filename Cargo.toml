@@ -13,6 +13,3 @@ log = "0.4"
 
 [dependencies.rustic-core]
 git = "https://github.com/rustic-music-player/core"
-
-[patch."https://github.com/rustic-music-player/core".rustic-core]
-path = "../core"
