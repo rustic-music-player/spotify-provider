@@ -1,6 +1,6 @@
-use rustic::provider;
-use rustic::library::Album;
 use rspotify::spotify::model::album::{FullAlbum, SimplifiedAlbum};
+use rustic::library::Album;
+use rustic::provider;
 use util::*;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -20,7 +20,7 @@ impl From<SpotifyFullAlbum> for Album {
             artist,
             provider: provider::Provider::Spotify,
             image_url: convert_images(&album.images),
-            uri: format!("spotify://album/{}", album.id)
+            uri: format!("spotify://album/{}", album.id),
         }
     }
 }
@@ -36,7 +36,7 @@ impl From<SpotifySimplifiedAlbum> for Album {
             artist,
             provider: provider::Provider::Spotify,
             image_url: convert_images(&album.images),
-            uri: format!("spotify://album/{}", album.id)
+            uri: format!("spotify://album/{}", album.id),
         }
     }
 }
