@@ -56,7 +56,7 @@ impl rustic::provider::ProviderInstance for SpotifyProvider {
                 Spotify::default()
                     .client_credentials_manager(client_credential)
                     .build()
-            }).ok_or(err_msg("Spotify auth failed"))?;
+            }).ok_or_else(|| err_msg("Spotify auth failed"))?;
 
         self.client = Some(spotify);
 
@@ -118,7 +118,7 @@ impl rustic::provider::ProviderInstance for SpotifyProvider {
         }
     }
 
-    fn navigate(&self, path: Vec<String>) -> Result<provider::ProviderFolder, Error> {
+    fn navigate(&self, _path: Vec<String>) -> Result<provider::ProviderFolder, Error> {
         Ok(self.root())
     }
 

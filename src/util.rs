@@ -2,12 +2,12 @@ use rspotify::spotify::model::artist::SimplifiedArtist;
 use rspotify::spotify::model::image::Image;
 use rustic::library::Artist;
 
-pub fn convert_images(images: &Vec<Image>) -> Option<String> {
+pub fn convert_images(images: &[Image]) -> Option<String> {
     images.first().map(|image| image.url.clone())
 }
 
 pub fn artists_to_artist(artists: Vec<SimplifiedArtist>) -> Option<Artist> {
-    if artists.len() == 0 {
+    if artists.is_empty() {
         return None;
     }
     let name = artists

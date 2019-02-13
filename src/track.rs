@@ -33,7 +33,7 @@ impl From<SpotifyFullTrack> for Track {
             provider: provider::Provider::Spotify,
             image_url: convert_images(&track.album.images),
             uri: format!("spotify://track/{}", track.id),
-            duration: Some(track.duration_ms as u64),
+            duration: Some(u64::from(track.duration_ms)),
         }
     }
 }
@@ -54,7 +54,7 @@ impl From<SpotifySimplifiedTrack> for Track {
             provider: provider::Provider::Spotify,
             image_url: None,
             uri: format!("spotify://track/{}", track.id),
-            duration: Some(track.duration_ms as u64),
+            duration: Some(u64::from(track.duration_ms)),
         }
     }
 }
