@@ -1,4 +1,7 @@
+use std::collections::HashMap;
+
 use rspotify::spotify::model::album::{FullAlbum, SimplifiedAlbum};
+
 use rustic::library::Album;
 use rustic::provider;
 use util::*;
@@ -21,6 +24,7 @@ impl From<SpotifyFullAlbum> for Album {
             provider: provider::Provider::Spotify,
             image_url: convert_images(&album.images),
             uri: format!("spotify://album/{}", album.id),
+            meta: HashMap::new(),
         }
     }
 }
@@ -37,6 +41,7 @@ impl From<SpotifySimplifiedAlbum> for Album {
             provider: provider::Provider::Spotify,
             image_url: convert_images(&album.images),
             uri: format!("spotify://album/{}", album.id),
+            meta: HashMap::new(),
         }
     }
 }

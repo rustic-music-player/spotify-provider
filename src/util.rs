@@ -1,5 +1,8 @@
+use std::collections::HashMap;
+
 use rspotify::spotify::model::artist::SimplifiedArtist;
 use rspotify::spotify::model::image::Image;
+
 use rustic::library::Artist;
 
 pub fn convert_images(images: &[Image]) -> Option<String> {
@@ -20,5 +23,6 @@ pub fn artists_to_artist(artists: Vec<SimplifiedArtist>) -> Option<Artist> {
         name,
         uri: String::new(),
         image_url: None,
+        meta: HashMap::new(),
     })
 }
