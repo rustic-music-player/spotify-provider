@@ -71,6 +71,10 @@ impl rustic::provider::ProviderInstance for SpotifyProvider {
         "spotify"
     }
 
+    fn provider(&self) -> provider::Provider {
+        provider::Provider::Spotify
+    }
+
     fn sync(&mut self, library: SharedLibrary) -> Result<provider::SyncResult, Error> {
         let spotify = self.client.clone().unwrap();
 
@@ -157,5 +161,9 @@ impl rustic::provider::ProviderInstance for SpotifyProvider {
 
     fn resolve_track(&self, _uri: &str) -> Result<Option<Track>, Error> {
         Ok(None)
+    }
+
+    fn stream_url(&self, track: &Track) -> Result<String, Error> {
+        unimplemented!()
     }
 }
