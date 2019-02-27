@@ -1,4 +1,7 @@
+use std::collections::HashMap;
+
 use rspotify::spotify::model::track::{FullTrack, SimplifiedTrack};
+
 use rustic::library::{Album, Track};
 use rustic::provider;
 use util::*;
@@ -28,12 +31,13 @@ impl From<SpotifyFullTrack> for Track {
                 provider: provider::Provider::Spotify,
                 image_url: convert_images(&track.album.images),
                 uri: format!("spotify://album/{}", track.album.id),
+                meta: HashMap::new(),
             }),
-            stream_url: String::new(),
             provider: provider::Provider::Spotify,
             image_url: convert_images(&track.album.images),
             uri: format!("spotify://track/{}", track.id),
             duration: Some(u64::from(track.duration_ms)),
+            meta: HashMap::new(),
         }
     }
 }
@@ -50,11 +54,11 @@ impl From<SpotifySimplifiedTrack> for Track {
             artist,
             album_id: None,
             album: None,
-            stream_url: String::new(),
             provider: provider::Provider::Spotify,
             image_url: None,
             uri: format!("spotify://track/{}", track.id),
             duration: Some(u64::from(track.duration_ms)),
+            meta: HashMap::new(),
         }
     }
 }

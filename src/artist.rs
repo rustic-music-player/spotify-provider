@@ -1,4 +1,7 @@
+use std::collections::HashMap;
+
 use rspotify::spotify::model::artist::{FullArtist, SimplifiedArtist};
+
 use rustic::library::Artist;
 use util::*;
 
@@ -16,6 +19,7 @@ impl From<SpotifyFullArtist> for Artist {
             name: artist.name,
             image_url: convert_images(&artist.images),
             uri: format!("spotify://artist/{}", artist.id),
+            meta: HashMap::new(),
         }
     }
 }
@@ -28,6 +32,7 @@ impl From<SpotifySimplifiedArtist> for Artist {
             name: artist.name,
             image_url: None,
             uri: format!("spotify://artist/{}", artist.id),
+            meta: HashMap::new(),
         }
     }
 }
