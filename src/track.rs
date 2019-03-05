@@ -1,10 +1,11 @@
 use std::collections::HashMap;
 
 use rspotify::spotify::model::track::{FullTrack, SimplifiedTrack};
+use serde_derive::{Serialize, Deserialize};
 
-use rustic::library::{Album, Track};
-use rustic::provider;
-use util::*;
+use rustic_core::library::{Album, Track};
+use rustic_core::provider;
+use crate::util::*;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct SpotifyFullTrack(FullTrack);

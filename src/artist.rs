@@ -1,9 +1,9 @@
 use std::collections::HashMap;
 
 use rspotify::spotify::model::artist::{FullArtist, SimplifiedArtist};
-
-use rustic::library::Artist;
-use util::*;
+use serde_derive::{Serialize, Deserialize};
+use rustic_core::library::Artist;
+use crate::util::*;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct SpotifyFullArtist(FullArtist);

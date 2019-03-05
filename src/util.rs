@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use rspotify::spotify::model::artist::SimplifiedArtist;
 use rspotify::spotify::model::image::Image;
 
-use rustic::library::Artist;
+use rustic_core::library::Artist;
 
 pub fn convert_images(images: &[Image]) -> Option<String> {
     images.first().map(|image| image.url.clone())

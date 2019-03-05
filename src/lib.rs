@@ -1,27 +1,20 @@
-extern crate failure;
-extern crate rspotify;
-extern crate rustic_core as rustic;
-extern crate serde;
-#[macro_use]
-extern crate serde_derive;
-#[macro_use]
-extern crate log;
-
 mod album;
 mod artist;
 mod track;
 mod util;
 
+use log::{debug, trace};
 use failure::{err_msg, Error};
 use rspotify::spotify::client::Spotify;
 use rspotify::spotify::oauth2::{SpotifyClientCredentials, SpotifyOAuth};
 use rspotify::spotify::util::get_token;
-use rustic::library::{Album, Artist, SharedLibrary, Track};
-use rustic::provider;
+use rustic_core::library::{Album, Artist, SharedLibrary, Track};
+use rustic_core::provider;
+use serde_derive::Deserialize;
 
-use album::*;
-use artist::*;
-use track::*;
+use crate::album::*;
+use crate::artist::*;
+use crate::track::*;
 
 #[derive(Clone, Deserialize, Debug)]
 pub struct SpotifyProvider {
@@ -31,7 +24,7 @@ pub struct SpotifyProvider {
     client: Option<Spotify>,
 }
 
-impl rustic::provider::ProviderInstance for SpotifyProvider {
+impl rustic_core::provider::ProviderInstance for SpotifyProvider {
     fn setup(&mut self) -> Result<(), Error> {
         let mut oauth = SpotifyOAuth::default()
             .client_id(&self.client_id)
@@ -163,7 +156,7 @@ impl rustic::provider::ProviderInstance for SpotifyProvider {
         Ok(None)
     }
 
-    fn stream_url(&self, track: &Track) -> Result<String, Error> {
+    fn stream_url(&self, _track: &Track) -> Result<String, Error> {
         unimplemented!()
     }
 }
